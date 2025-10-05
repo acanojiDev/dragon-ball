@@ -10,6 +10,9 @@
   },
   "devDependencies": {
     "typescript": "~5.9.3",
-    "vite": "^7.1.7"
+    "vite": "^7.1.9"
+  },
+  "dependencies": {
+    "rxjs": "^7.8.2"
   }
 }

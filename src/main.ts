@@ -1,24 +1,54 @@
 import './style.css'
-import typescriptLogo from './typescript.svg'
-import viteLogo from '/vite.svg'
-import { setupCounter } from './counter.ts'
 
-document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
-  <div>
-    <a href="https://vite.dev" target="_blank">
-      <img src="${viteLogo}" class="logo" alt="Vite logo" />
-    </a>
-    <a href="https://www.typescriptlang.org/" target="_blank">
-      <img src="${typescriptLogo}" class="logo vanilla" alt="TypeScript logo" />
-    </a>
-    <h1>Vite + TypeScript</h1>
-    <div class="card">
-      <button id="counter" type="button"></button>
-    </div>
-    <p class="read-the-docs">
-      Click on the Vite and TypeScript logos to learn more
-    </p>
-  </div>
-`
 
-setupCounter(document.querySelector<HTMLButtonElement>('#counter')!)
+interface Character {
+  id:number;
+  name:string;
+  image:string;
+  ki:string;
+  race:string
+}
+
+let page = 1;
+
+
+
+//obtengo personajes
+async function getCharacters(): Promise<Character[]> {
+  try {
+    const respone = await fetch(`https://dragonball-api.com/api/characters?page=${page}`);
+    const data = await respone.json();
+    return data.items;
+  } catch (error) {
+    console.error('Error al cargar personajes: ', error);
+    return []
+  }
+}
+
+//mostrar personajes
+function displayCharacters(characters:Character[]){
+  const container = document.getElementById('characters-container');
+
+  if(!container) return;
+  //Limpio contenedor
+  container.innerHTML = '';
+
+  //Cada personaje crea un div
+  characters.forEach(character => {
+    const characterDiv = document.createElement('div');
+    characterDiv.innerHTML = `
+    <h3>${character.name}</h3>
+    <h3>${character.ki}</h3>
+    <h3>${character.race}</h3>
+    <img src="${character.image}"
+    <h5>"poll"</h5>
+    `;
+    container.appendChild(characterDiv);
+  });
+}
+
+
+const characters = await getCharacters();
+
+displayCharacters(characters)
+
