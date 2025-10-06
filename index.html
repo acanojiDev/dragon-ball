@@ -2,17 +2,33 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <link rel="icon" type="image/svg+xml" href="/src/public/Dragon_Ball_Super.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vite + TS</title>
+    <title>Aplicación Dragon Ball</title>
   </head>
   <body>
-
-  <h1>Personajes de Dragon Ball</h1>
-  <button onclick="lastPage()" id="last-page">Página anterior</button>
-  <button onclick="nextPage()" id="next-page">Siguiente página</button>
-
-  <div id="characters-container"></div>
+  <nav>
+    <ul>
+      <li><a href="#inicio">Dragon Ball Universe</a></li>
+      <li><a href="#personajes" class="active">Personajes</a></li>
+      <li><a href="#planetas">Planetas</a></li>
+      <li><a href="#transformaciones">Transformaciones</a></li>
+    </ul>
+  </nav>
+  <img src="./src/public/Dragon_Ball_Super.png" alt="" style="width: 500px; display: flex;">
+  <div class="screens">  
+    <h4>Pag:</h4>
+    <button onclick="nextPage(1)">1</button>
+    <button onclick="nextPage(2)">2</button>
+    <button onclick="nextPage(3)">3</button>
+    <button onclick="nextPage(4)">4</button>
+    <button onclick="nextPage(5)">5</button>
+    <button onclick="nextPage(6)">6</button></div>
+  <div id="characters-container">
+    <!-- Renderizo personajes -->
+  </div>
+  <div id="planetas-container"><!-- TODO --></div>
+  <div id="transformaciones-container"><!-- TODO --></div>
   <script defer type="module" src="/src/main.ts"></script>
   </body>
 </html>

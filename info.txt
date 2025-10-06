@@ -1,0 +1,12 @@
+Características del código RxJS:
+
+BehaviorSubject para page$: Mantiene el estado de la página actual y emite valores cuando cambia
+fromFetch: Reemplaza el fetch nativo con un observable de RxJS
+Operadores RxJS:
+
+switchMap: Cancela peticiones anteriores si hay una nueva (útil para cambios rápidos de página)
+catchError: Maneja errores y devuelve un observable vacío
+tap: Para efectos secundarios si los necesitas
+
+
+Suscripción: En lugar de await, te suscribes al observable para recibir los datos
